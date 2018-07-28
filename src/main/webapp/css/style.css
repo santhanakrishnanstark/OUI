@@ -1,0 +1,41 @@
+body{
+	margin:0px; padding:0px;
+}
+header{
+	padding:1em;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 36px;
+}
+a:hover{ text-decoration: none; }
+.brand{
+	color: grey;
+}
+header .uibrand{
+	text-align:center;
+}
+.brand .o{
+	color: red;
+	font-size: 66px; font-weight: 900;
+}
+.brand .ui{
+	font-family: 'Raleway', sans-serif;
+}
+#login{ padding:2em 2em 1em 2em; box-shadow: 0px 1px 5px -1px rgba(92,92,92,1);  }
+.logintitle{ padding:0.5em 0.5em; box-shadow: 0px 2px 6px -1px rgba(92,92,92,1);  }
+input{  margin-bottom:3em; outline: none !important; border:none !important;
+		border-bottom: 1px solid grey !important;
+}
+input:focus {
+  border-color:#ccc;
+  outline: 0 !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;  border-bottom: 2px solid grey !important;
+}
+ #connect{
+ 	background-color: red; color:white;
+ }
+.loginlabel{
+ 	color: red;
+ }
+ ul{ list-style-type: none; margin: 2px; margin-left:-25px;  }
+ ul span{ background-color: purple; color:white; }
