@@ -16,7 +16,7 @@
             <h1>Oracle UI</h1>
          </div>
          <div class="profile">
-            <h5>User</h5>
+            <h5> ${User} </h5>
          </div>
      </header>
      
@@ -38,10 +38,14 @@
      <div class="row mt-3">
         <div class="col-md-3">
              <div class="sidepan">
-                <h4>Tables</h4>
-                 <h6><a href="#"> >> Create Table</a></h6>
-                 <div id="tablelist">
-                    
+	              <div class="sidetop">
+	                <h4>Tables</h4>
+	                 <h6><a href="#"> >> Create Table</a></h6>
+	                 </div>
+                 <div class="list">
+                    <table id="tablelist">
+                    	
+                    </table>
                  </div>
              </div>
          </div>
@@ -82,6 +86,7 @@
      <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
      <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.js"></script>
   	<script src="${pageContext.request.contextPath}/js/script.js"></script>
+  	<script src="${pageContext.request.contextPath}/js/script2.js"></script>
  
 </body>
 </html>

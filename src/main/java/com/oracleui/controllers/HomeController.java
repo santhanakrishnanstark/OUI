@@ -33,7 +33,6 @@ public class HomeController {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		loginaccess = LoginService.checkUser(username,password);
-		System.out.println(loginaccess);
 		if(loginaccess) {
 			return "oraclelogin";
 		}else {
@@ -64,10 +63,12 @@ public class HomeController {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		Statement st = OracleConnect.getUrl(username, password);
+		HttpSession session = request.getSession();
 		if(st != null) {
+			session.setAttribute("User", username);
+			session.setAttribute("Pass", password);
 			return "oracleui";
 		}else {
-			HttpSession session = request.getSession();
 			session.setAttribute("loginerror", "<p>INVALID LOGIN </p>"); 
 		}
 		

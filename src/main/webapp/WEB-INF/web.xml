@@ -8,17 +8,28 @@
     <servlet-name>spring</servlet-name>  
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>  
     <load-on-startup>1</load-on-startup>  
-</servlet>  
+</servlet>
+ <servlet>
+ 	<description>
+ 	</description>
+ 	<display-name>ListTable</display-name>
+ 	<servlet-name>ListTable</servlet-name>
+ 	<servlet-class>com.oracleui.services.ListTable</servlet-class>
+ </servlet>  
 <servlet-mapping>  
-    <servlet-name>default</servlet-name>  
+	<servlet-name>default</servlet-name>
     <url-pattern>*.css</url-pattern>  
 </servlet-mapping>  
 <servlet-mapping>  
-    <servlet-name>default</servlet-name>  
+	<servlet-name>default</servlet-name>
     <url-pattern>*.js</url-pattern>  
 </servlet-mapping>  
 <servlet-mapping>  
     <servlet-name>spring</servlet-name>  
     <url-pattern>/</url-pattern>  
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>ListTable</servlet-name>
+	<url-pattern>/ListTable</url-pattern>
 </servlet-mapping>  
 </web-app>  
