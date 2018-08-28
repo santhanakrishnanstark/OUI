@@ -1,29 +1,15 @@
 $(document).ready(function(){
-	$("#connect").bind("click",connectoOracle);
-	$("#uiloginbt").bind("click",connect);
+    $("#signin").bind("click",showLogin);
+    $("#signup").bind("click",showRegister);
 });
 
-function connectoOracle(){
-	$.ajax({
-		url: 'Login',
-		type: 'post',
-		data: $("#loginform").serialize(),
-		success: function(result){
-			console.log(result);
-		}
-	});
+function showLogin(){
+    $(".logindiv").addClass("showlogin").css({"display":"block"});
+    $(".registerdiv").removeClass("showregister");
 }
 
-function connect(){
-	$.ajax({
-		url: 'UiLogin',
-		type: 'post',
-		data: $("#uilogin").serialize(),
-		success: function(result){
-			console.log(result);
-			if(result){
-				window.location='index2.html';
-			}
-		}
-	});
+function showRegister(){
+    $(".registerdiv").addClass("showregister");
+    $(".logindiv").removeClass("showlogin");
+    $(".logindiv").css({"display":"none"});
 }
