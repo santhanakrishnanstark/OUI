@@ -304,5 +304,14 @@ table tr td{ margin:5px; padding:5px; }
 	box-shadow: inset -1px -1px 0 #fff;
 }	
 /* code pen over*/
-
+#tcreate{
+	background: whitesmoke;
+	border-collapse: separate;
+	box-shadow: inset 0 1px 0 #fff;
+	font-size: 12px;
+	line-height: 24px;
+	margin: 30px auto;
+	text-align: center;
+}
+#tcreate tr th{ padding:5px 15px; }
 

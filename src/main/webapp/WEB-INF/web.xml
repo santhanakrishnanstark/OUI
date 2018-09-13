@@ -22,13 +22,20 @@
  	<display-name>ShowTable</display-name>
  	<servlet-name>ShowTable</servlet-name>
  	<servlet-class>com.oracleui.services.ShowTable</servlet-class>
+ </servlet>
+ <servlet>
+ 	<description>
+ 	</description>
+ 	<display-name>CreateTable</display-name>
+ 	<servlet-name>CreateTable</servlet-name>
+ 	<servlet-class>com.oracleui.services.CreateTable</servlet-class>
  </servlet>  
-<servlet-mapping>
-	<servlet-name>default</servlet-name>  
+<servlet-mapping> 
+<servlet-name>default</servlet-name> 
     <url-pattern>*.css</url-pattern>  
 </servlet-mapping>  
 <servlet-mapping>
-	<servlet-name>default</servlet-name>
+<servlet-name>default</servlet-name>
     <url-pattern>*.js</url-pattern>  
 </servlet-mapping>  
 <servlet-mapping>  
@@ -42,5 +49,9 @@
 <servlet-mapping>
 	<servlet-name>ShowTable</servlet-name>
 	<url-pattern>/ShowTable</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>CreateTable</servlet-name>
+	<url-pattern>/CreateTable</url-pattern>
 </servlet-mapping>  
 </web-app>  

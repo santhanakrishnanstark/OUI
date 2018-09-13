@@ -5,7 +5,8 @@ $(document).ready(function(){
 	$('#tablecreationpan').hide();
 	$('#createtablelink').bind("click",showViewPan);
 	showTables();
-	
+	$('#go').bind("click",showTForm);
+	$('#createtb').bind("click",createTable);
 	    
 });
 
@@ -26,12 +27,12 @@ function showTables(){
 
 function showViewPan(){
 	$('#tablecreationpan').show();
-	$('#tablepan').hide();
+	$('#tablepan,#tcreationform2').hide();
 }
 
 function showTName(e){ 
 	//alert($('.radio:checked').val());
-	$('#tablecreationpan').hide(); $('#tablepan').show();
+	$('#tablecreationpan,#tcreationform2').hide(); $('#tablepan').show();
 	$.ajax({
 		url : 'ShowTable',
         type: 'post',
@@ -41,3 +42,57 @@ function showTName(e){
 	      }
 	});
 }
+
+function showTForm(){ 
+	$("#tablepan,#tablecreationpan").hide();
+	$("#tcreationform2").show();
+	let tname = $('#tname').val();
+	let tcol = $('#tcol').val();
+	let tquery="";
+	let tquerybegin = "<form id='frm'>" +
+			"<input type='hidden' name='tablename' value="+tname+" />" +
+				"<input type='hidden' name='column' value="+tcol+" />" +
+			"<table id='tcreate'><thead>" +
+			"<tr>" +
+			"<th>Column Name</th>" +
+			" <th>Datatype</th> " +
+			"<th>Length</th>" +
+			"<th>Primary</th>" +
+			"<th>Unique</th>" +
+			"<th>Not Null</th>" +
+			"<th>AI</th>" +
+			"</tr></thead><tbody>";
+	for(let i=0; i<tcol; i++){
+		tquery+="<tr>" +
+				"<td><input type='text' name='column"+i+"'></td>" +
+				"<td> <select name='type"+i+"'> "+
+					   "<option title='NUMBER'>NUMBER</option> "+
+					   "<option title='VARCHAR'>VARCHAR</option> "+
+					   "<option title='DATE'>DATE</option> "+
+					"</select> "+
+				 "</td>" +
+				 "<td><input type='number' width='10' name='length"+i+"' style='width:120'></td>" +
+				 "<td><input type='checkbox' value='PRIMARY KEY' name='p"+i+"'></td>" +
+				 "<td><input type='checkbox' value='UNIQUE' name='u"+i+"'></td>" +
+				 "<td><input type='checkbox' value='NOT NULL' name='n"+i+"'></td>" +
+				 "<td><input type='checkbox' value='auto' name='a"+i+"'></td>" +
+				"</tr>";
+	}
+	let tqueryend="</tbody></table>" +
+					"<input type='button' onClick='createTable()' id='createtb' class='btn' value='Create' style='float: right; margin-right: 14%; margin-top: -10px;'>" +
+					" </form>";
+	$('#tcreationform2').html(tquerybegin+tquery+tqueryend);	
+}
+
+function createTable(){
+	$.ajax({
+		url : 'CreateTable',
+        type: 'post',
+        data : $("#frm").serialize(),
+          success : function(result){
+	          $("#message").html(result);
+	      }
+	});
+}
+
+

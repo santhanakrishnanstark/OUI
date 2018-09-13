@@ -59,19 +59,19 @@
                       <div class="form-group row">
                         <label for="tablename" class="col-sm-2 col-form-label">Table Name :</label>
                         <div class="col-sm-10">
-                          <input type="text"  name="tname">
+                          <input type="text"  name="tname" id="tname">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="tablecolumn" class="col-sm-2 col-form-label">No of Column :</label>
                         <div class="col-sm-10">
-                          <input type="number" name="tcol">
+                          <input type="number" name="tcol" id="tcol">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-2"></label>
                         <div class="col-sm-10">
-                          <input type="button" class="btn" value="Go >>" />
+                          <input type="button" class="btn" id="go" value="Go >>" />
                         </div>
                     </div>
                  </form>
