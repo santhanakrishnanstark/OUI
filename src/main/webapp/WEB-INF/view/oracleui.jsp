@@ -40,7 +40,7 @@
              <div class="sidepan">
 	              <div class="sidetop">
 	                <h4>Tables</h4>
-	                 <h6><a href="#"> >> Create Table</a></h6>
+	                 <h6><a href="#" id="createtablelink"> >> Create Table</a></h6>
 	                 </div>
                  <div class="list">
                     <table id="tablelist">
@@ -50,33 +50,37 @@
              </div>
          </div>
          <div class="col-md-9">
-             <div id="viewpan">
-                <div id="tablecreationpan">
-                    <h5>Table Creation</h5>
-                    <div class="tcreationform">
-                       <form>
-                          <div class="form-group row">
-                            <label for="tablename" class="col-sm-2 col-form-label">Table Name :</label>
-                            <div class="col-sm-10">
-                              <input type="text"  name="tname">
-                            </div>
-                          </div>
-                          <div class="form-group row">
-                            <label for="tablecolumn" class="col-sm-2 col-form-label">No of Column :</label>
-                            <div class="col-sm-10">
-                              <input type="number" name="tcol">
-                            </div>
+           <div id="viewpan">
+         	<div id="tablepan"></div>
+            <div id="tablecreationpan">
+                <h5>Table Creation</h5>
+                <div class="tcreationform">
+                   <form>
+                      <div class="form-group row">
+                        <label for="tablename" class="col-sm-2 col-form-label">Table Name :</label>
+                        <div class="col-sm-10">
+                          <input type="text"  name="tname">
                         </div>
-                        <div class="form-group row">
-                            <label class="col-sm-2"></label>
-                            <div class="col-sm-10">
-                              <input type="button" class="btn" value="Go >>" />
-                            </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="tablecolumn" class="col-sm-2 col-form-label">No of Column :</label>
+                        <div class="col-sm-10">
+                          <input type="number" name="tcol">
                         </div>
-                     </form>
                     </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2"></label>
+                        <div class="col-sm-10">
+                          <input type="button" class="btn" value="Go >>" />
+                        </div>
+                    </div>
+                 </form>
                 </div>
-             </div>
+            </div>
+            <div id="tcreationform2">
+            	
+            </div>
+           </div>
          </div>
        </div>
      

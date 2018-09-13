@@ -2,7 +2,11 @@
  *  script for ORacle UI page
  */
 $(document).ready(function(){
+	$('#tablecreationpan').hide();
+	$('#createtablelink').bind("click",showViewPan);
 	showTables();
+	
+	    
 });
 
 function showTables(){
@@ -14,12 +18,26 @@ function showTables(){
 	          console.log(result);
         	  var count = Object.keys(result).length;
         	  for(var i=1; i<=count; i++){
-					$("#tablelist").append("<tr><td> <label onClick='showTName(this)' id='"+result[i]+"'> <input type='radio' class='option-input radio' name='example'  /> "+result[i]+" </label> </td></tr>");
+					$("#tablelist").append("<tr><td> <label> <input type='radio' class='option-input radio' onClick='showTName()' name='tablename' value="+result[i]+"  /> "+result[i]+" </label> </td></tr>");
 	        	  }
 	      }
 	});
 }
 
-function showTName(e){
-	console.log($(e).attr('id'));
+function showViewPan(){
+	$('#tablecreationpan').show();
+	$('#tablepan').hide();
+}
+
+function showTName(e){ 
+	//alert($('.radio:checked').val());
+	$('#tablecreationpan').hide(); $('#tablepan').show();
+	$.ajax({
+		url : 'ShowTable',
+        type: 'post',
+        data : {table_name : $('.radio:checked').val() },
+          success : function(result){
+	          $("#tablepan").html(result);
+	      }
+	});
 }
