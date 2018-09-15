@@ -1,12 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isELIgnored="false"%>
+    <%!String tablename; %>
+    <% if(session.getAttribute("current_table") != null){
+    	 tablename =(String) session.getAttribute("current_table");
+     	}
+    	%>
 <html>
 	<head>
-		<title>Oracle UI</title>
+		<title>OUI Insert</title>
 		 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Do+Hyeon|Lekton|Open+Sans" rel="stylesheet">
    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style2.css">
     <link  type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css" />
      <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
  </head>
@@ -25,9 +31,9 @@
          <div class="col-md-9">
              <div class="navpan">
                 <ul>
-                    <li><a href="#" class="active">Show_Table</a></li>
+                    <li><a href="oracleuipage">Show_Table</a></li>
                     <li><a href="#">SQL</a></li>
-                    <li><a href="insertpage">Insert</a></li>
+                    <li><a href="#" class="active">Insert</a></li>
                     <li><a href="#">Update</a></li>
                     <li><a href="#">Drop</a></li>
                     <li><a href="#">Help</a></li>
@@ -40,7 +46,7 @@
              <div class="sidepan">
 	              <div class="sidetop">
 	                <h4>Tables</h4>
-	                 <h6><a href="#" id="createtablelink"> >> Create Table</a></h6>
+	                 <h6><a href="oracleuipage" id="createtablelink"> >> Create Table</a></h6>
 	                 </div>
                  <div class="list">
                     <table id="tablelist">
@@ -51,36 +57,14 @@
          </div>
          <div class="col-md-9">
            <div id="viewpan">
-         	<div id="tablepan"></div>
-            <div id="tablecreationpan">
-                <h5>Table Creation</h5>
-                <div class="tcreationform">
-                   <form>
-                      <div class="form-group row">
-                        <label for="tablename" class="col-sm-2 col-form-label">Table Name :</label>
-                        <div class="col-sm-10">
-                          <input type="text"  name="tname" id="tname">
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="tablecolumn" class="col-sm-2 col-form-label">No of Column :</label>
-                        <div class="col-sm-10">
-                          <input type="number" name="tcol" id="tcol">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2"></label>
-                        <div class="col-sm-10">
-                          <input type="button" class="btn" id="go" value="Go >>" />
-                        </div>
-                    </div>
-                 </form>
-                </div>
-            </div>
-            <div id="tcreationform2">
-            	
-            </div>
-             <div class="messagebox"><p id="message"></p></div>
+           		<div class="inputdialog">
+				  <lable for="row">Enter No of Row : </lable> 
+				  <input type="number" class="dialogtxt"  placeholder="no of row">
+				  <input class="but" type="button" value="Add">
+				  <input class="but" type="button" value="+">
+				  <input class="but" type="button" value="-">
+				</div>
+				<div id="insertable mt-3"></div>	
            </div>
          </div>
        </div>
@@ -92,6 +76,10 @@
      <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.js"></script>
   	<script src="${pageContext.request.contextPath}/js/script.js"></script>
   	<script src="${pageContext.request.contextPath}/js/script2.js"></script>
- 
+ 	<script>
+ 	var name = "<%=tablename%>";
+ 	$('[value="<%=tablename%>"]').prop('checked', true); 
+ 	alert(name);
+ 	</script>
 </body>
 </html>

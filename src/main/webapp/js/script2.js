@@ -6,8 +6,7 @@ $(document).ready(function(){
 	$('#createtablelink').bind("click",showViewPan);
 	showTables();
 	$('#go').bind("click",showTForm);
-	$('#createtb').bind("click",createTable);
-	    
+	$('#createtb').bind("click",createTable); 
 });
 
 function showTables(){
@@ -79,9 +78,22 @@ function showTForm(){
 				"</tr>";
 	}
 	let tqueryend="</tbody></table>" +
-					"<input type='button' onClick='createTable()' id='createtb' class='btn' value='Create' style='float: right; margin-right: 14%; margin-top: -10px;'>" +
+					"<ul style=' float: right; margin-right: 12%;' >"+
+					"<li><input type='button' onClick='showQuery()' id='showquery' class='btn' value='ShowQuery' > </li>" +
+					"<li><input type='button' onClick='createTable()' id='createtb' class='btn' value='Create' > </li	> " +
+					"</ul>" +
 					" </form>";
 	$('#tcreationform2').html(tquerybegin+tquery+tqueryend);	
+}
+function showQuery(){
+	$.ajax({
+		url : 'showquery',
+        type: 'post',
+        data : $("#frm").serialize(),
+          success : function(result){
+	          alert(result);
+	      }
+	});
 }
 
 function createTable(){
@@ -90,7 +102,9 @@ function createTable(){
         type: 'post',
         data : $("#frm").serialize(),
           success : function(result){
-	          $("#message").html(result);
+	         // $("#message").html(result);
+	          alert(result);
+	          location.reload(true);
 	      }
 	});
 }

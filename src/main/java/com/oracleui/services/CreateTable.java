@@ -1,10 +1,18 @@
 package com.oracleui.services;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Statement;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.jasper.tagplugins.jstl.core.Out;
+
+import com.oracleui.dbconnect.OracleConnect;
 
 /**
  * Servlet implementation class CreateTable
@@ -12,12 +20,13 @@ import javax.servlet.http.HttpServletResponse;
 public class CreateTable extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    
+    Statement st;
     public CreateTable() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PrintWriter out = response.getWriter();
 		try {
 			String tablename = request.getParameter("tablename");
 			int cols = Integer.parseInt(request.getParameter("column"));
@@ -56,8 +65,20 @@ public class CreateTable extends HttpServlet {
 			}
 			query += " )";
 			
-			System.out.println(query);
-			
+			createquery.append(query);
+			int index_of_comma = createquery.indexOf(",", createquery.length()-4);
+			String cquery = createquery.deleteCharAt(index_of_comma).toString();
+			System.out.println(cquery);
+			HttpSession session = request.getSession();
+			String uname = (String) session.getAttribute("User");
+			String pass = (String) session.getAttribute("Pass");
+			st = OracleConnect.getUrl(uname, pass);
+			int res= st.executeUpdate(cquery);
+			if(res>=0) {
+				out.println("Table Created Successfully");
+			}else {
+				out.println("Table Not Created");
+			}
 			
 		}catch(Exception e) {
 			System.out.println(e);

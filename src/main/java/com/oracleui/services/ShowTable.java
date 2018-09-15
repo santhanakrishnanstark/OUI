@@ -30,6 +30,7 @@ public class ShowTable extends HttpServlet {
 		String tablename = request.getParameter("table_name");
 		try {
 		HttpSession session = request.getSession();
+		session.setAttribute("current_table", tablename);
 		String user = (String) session.getAttribute("User");
 		String pass = (String) session.getAttribute("Pass");
 		st = OracleConnect.getUrl(user, pass);
