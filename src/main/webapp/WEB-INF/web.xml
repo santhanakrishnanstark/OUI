@@ -29,13 +29,20 @@
  	<display-name>CreateTable</display-name>
  	<servlet-name>CreateTable</servlet-name>
  	<servlet-class>com.oracleui.services.CreateTable</servlet-class>
- </servlet>  
-<servlet-mapping> 
-<servlet-name>default</servlet-name> 
+ </servlet>
+ <servlet>
+ 	<description>
+ 	</description>
+ 	<display-name>InsertRow</display-name>
+ 	<servlet-name>InsertRow</servlet-name>
+ 	<servlet-class>com.oracleui.services.InsertRow</servlet-class>
+ </servlet>
+<servlet-mapping>
+	<servlet-name>default</servlet-name>
     <url-pattern>*.css</url-pattern>  
 </servlet-mapping>  
 <servlet-mapping>
-<servlet-name>default</servlet-name>
+	<servlet-name>default</servlet-name>
     <url-pattern>*.js</url-pattern>  
 </servlet-mapping>  
 <servlet-mapping>  
@@ -53,5 +60,9 @@
 <servlet-mapping>
 	<servlet-name>CreateTable</servlet-name>
 	<url-pattern>/CreateTable</url-pattern>
-</servlet-mapping>  
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>InsertRow</servlet-name>
+	<url-pattern>/InsertRow</url-pattern>
+</servlet-mapping> 
 </web-app>  

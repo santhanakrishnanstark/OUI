@@ -58,13 +58,15 @@
          <div class="col-md-9">
            <div id="viewpan">
            		<div class="inputdialog">
-				  <lable for="row">Enter No of Row : </lable> 
-				  <input type="number" class="dialogtxt"  placeholder="no of row">
-				  <input class="but" type="button" value="Add">
-				  <input class="but" type="button" value="+">
-				  <input class="but" type="button" value="-">
+           		<form id="insertfrm">
+					  <lable for="row">Enter No of Row : </lable> 
+					  <input type="number" class="dialogtxt" name="row" placeholder="no of row">
+					  <input class="but" id="addrowsbtn" type="button" value="Add">
+					  <input class="but" type="button" value="+">
+					  <input class="but" type="button" value="-">
+				  </form>
 				</div>
-				<div id="insertable mt-3"></div>	
+				<div id="insertable" class="mt-5 ml-5">hello</div>	
            </div>
          </div>
        </div>
@@ -76,6 +78,7 @@
      <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.js"></script>
   	<script src="${pageContext.request.contextPath}/js/script.js"></script>
   	<script src="${pageContext.request.contextPath}/js/script2.js"></script>
+  	<script src="${pageContext.request.contextPath}/js/insert.js"></script>
  	<script>
  	var name = "<%=tablename%>";
  	$('[value="<%=tablename%>"]').prop('checked', true); 
