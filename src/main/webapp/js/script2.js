@@ -4,7 +4,7 @@
 $(document).ready(function(){
 	$('#tablecreationpan').hide();
 	$('#createtablelink').bind("click",showViewPan);
-	showTables();
+	showTables(); viewTableOnLoad();
 	$('#go').bind("click",showTForm);
 	$('#createtb').bind("click",createTable); 
 });
@@ -23,6 +23,17 @@ function showTables(){
 	      }
 	});
 }
+function viewTableOnLoad(){
+	$('#tablecreationpan,#tcreationform2').hide(); $('#tablepan').show();
+	$.ajax({
+		url : 'ShowTable',
+        type: 'post',
+        data : {table_name : $('.radio:checked').val(), sessiontb : tbname },
+          success : function(result){
+	          $("#tablepan").html(result);
+	      }
+	});
+}
 
 function showViewPan(){
 	$('#tablecreationpan').show();
@@ -38,6 +49,14 @@ function showTName(e){
         data : {table_name : $('.radio:checked').val() },
           success : function(result){
 	          $("#tablepan").html(result);
+	      }
+	});
+	$.ajax({
+		url : 'ShowUpTable',
+        type: 'post',
+        data : {table_name : $('.radio:checked').val() },
+          success : function(result){
+	          $("#updatetablepan").html(result);
 	      }
 	});
 }

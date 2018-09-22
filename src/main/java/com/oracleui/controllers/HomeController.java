@@ -1,6 +1,7 @@
 package com.oracleui.controllers;
 
 import java.io.PrintWriter;
+import java.sql.ResultSet;
 import java.sql.Statement;
 
 import javax.servlet.http.HttpServletRequest;
@@ -82,9 +83,37 @@ public class HomeController {
 	public String insertpage() {
 		return "insert";
 	}
+	@RequestMapping("/updatepage")
+	public String updatepage() {
+		return "update";
+	}
 	@RequestMapping("/oracleuipage")
 	public String uipage() {
 		return "oracleui";
+	}
+	
+	@RequestMapping("/getprimarycolumn")
+	public void getPrimaryColumn(HttpServletRequest request,HttpServletResponse response) {
+		PrintWriter out = null;  Statement st = null;
+		try {
+			out = response.getWriter();
+			HttpSession session = request.getSession();
+			String tablename = request.getParameter("table_name");
+			if(tablename == null) { tablename = request.getParameter("stb"); }
+			String user = (String) session.getAttribute("User");
+			String pass = (String) session.getAttribute("Pass");
+			st = OracleConnect.getUrl(user, pass);
+			/* to Check the table contain primary key column */
+				ResultSet primarycol=st.executeQuery("SELECT cols.table_name, cols.column_name,cols.position FROM all_constraints cons, all_cons_columns cols WHERE cols.table_name = '"+tablename+"' AND cons.constraint_type = 'P' AND cons.constraint_name = cols.constraint_name AND cons.owner = cols.owner ORDER BY cols.table_name, cols.position ");
+				if(primarycol.next()) {
+					out.println(primarycol.getString("position"));
+					System.out.println("Primary column : "+primarycol.getString("column_name"));
+				}else { System.out.println("no primary cloumn available");}
+			/* end of checking primary key column*/
+			
+		}catch(Exception e) {
+			out.println(e);
+		}
 	}
 	
 	@RequestMapping("/showquery")

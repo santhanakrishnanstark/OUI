@@ -34,7 +34,7 @@
                     <li><a href="oracleuipage">Show_Table</a></li>
                     <li><a href="#">SQL</a></li>
                     <li><a href="#" class="active">Insert</a></li>
-                    <li><a href="#">Update</a></li>
+                    <li><a href="updatepage">Update</a></li>
                     <li><a href="#">Drop</a></li>
                     <li><a href="#">Help</a></li>
                  </ul>
@@ -62,11 +62,12 @@
 					  <lable for="row">Enter No of Row : </lable> 
 					  <input type="number" class="dialogtxt" name="row" placeholder="no of row">
 					  <input class="but" id="addrowsbtn" type="button" value="Add">
-					  <input class="but" type="button" value="+">
-					  <input class="but" type="button" value="-">
+					  <input class="but" type="button" id="add" value="+">
+					  <input class="but" type="button" id="remove" value="-">
 				  </form>
 				</div>
 				<div id="insertable" class="mt-5 ml-5">hello</div>	
+				<div id="result"></div>
            </div>
          </div>
        </div>

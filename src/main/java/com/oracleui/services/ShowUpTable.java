@@ -14,27 +14,32 @@ import javax.servlet.http.HttpSession;
 import com.oracleui.dbconnect.OracleConnect;
 
 /**
- * Servlet implementation class ShowTable
+ * Servlet implementation class ShowUpTable
  */
-public class ShowTable extends HttpServlet {
+public class ShowUpTable extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     Statement st;
-    public ShowTable() {
+    public ShowUpTable() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//to get table name from radio click
+		System.out.println("ehlow owrliss");
 		PrintWriter out = response.getWriter();
 		String tablename = request.getParameter("table_name");
-		if(tablename == null) { tablename = request.getParameter("sessiontb"); }
+		if(tablename == null) { tablename = request.getParameter("stb"); }
 		try {
 		HttpSession session = request.getSession();
 		session.setAttribute("current_table", tablename);
 		String user = (String) session.getAttribute("User");
 		String pass = (String) session.getAttribute("Pass");
 		st = OracleConnect.getUrl(user, pass);
+		/* to Check the table contain primary key column */
+			ResultSet primarycol=st.executeQuery("SELECT cols.table_name, cols.column_name FROM all_constraints cons, all_cons_columns cols WHERE cols.table_name = '"+tablename+"' AND cons.constraint_type = 'P' AND cons.constraint_name = cols.constraint_name AND cons.owner = cols.owner ORDER BY cols.table_name, cols.position ");
+			if(primarycol.next()) {
+				System.out.println("Primary column : "+primarycol.getString("column_name"));
+			}else { System.out.println("no primary cloumn available");}
+		/* end of checking primary key column*/
 		String []fields;  int fieldcount=0;
 		ResultSet rscount = st.executeQuery("select count(column_name) from user_tab_columns where table_name = '"+tablename+"' ");
 		int count=0;
@@ -59,15 +64,16 @@ public class ShowTable extends HttpServlet {
 		out.print("</tr>");
 		ResultSet rs1 = st.executeQuery("select * from "+tablename+" ");
 		int rowcount=1;
-		 while(rs1.next()) {
+		 int i=1;
+		 while(rs1.next()) { 
 			 out.print("<tr>");
-				for(int i=1; i<=fieldcount; i++) {
-					String data = (rs1.getObject(i).getClass().getSimpleName().equals("Timestamp")) ?(rs1.getDate(i).toString()) : (rs1.getString(i));
-					out.print(" <td>" + data + "</td> ");
+				for(int j=1; j<=fieldcount; j++) {
+					String data = (rs1.getObject(j).getClass().getSimpleName().equals("Timestamp")) ?(rs1.getDate(j).toString()) : (rs1.getString(j));
+					out.print(" <td><input type='text' onfocus='getTableData(this)' onfocusout='updateRecord()' class='"+i+"' id='"+i+j+"' value='"+data+"'> </td> ");
 			
 				}
 			out.print("</tr>");
-			rowcount++;
+			rowcount++; i++;
 		}
 		 out.print("</table>");
 		}catch(Exception e) {
@@ -75,9 +81,6 @@ public class ShowTable extends HttpServlet {
 		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

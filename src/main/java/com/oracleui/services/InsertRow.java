@@ -23,9 +23,7 @@ public class InsertRow extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
@@ -64,7 +62,7 @@ public class InsertRow extends HttpServlet {
 				out.print("</tr>");
 			}
 			out.print("</table>");
-			out.print("<br/> <input type='button' class='btn' value='Insert' onClick='  insert("+row+","+count+",\"" + tablename + "\")' />");
+			out.print("<br/> <input type='button' class='btn' value='Insert' onClick='insert()' />");
 			
 		}catch(Exception e) {
 			out.print(e);
