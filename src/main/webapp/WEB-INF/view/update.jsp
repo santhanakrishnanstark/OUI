@@ -31,7 +31,7 @@
              <div class="navpan">
                 <ul>
                     <li><a href="oracleuipage">Show_Table</a></li>
-                    <li><a href="#">SQL</a></li>
+                    <li><a href="sql">SQL</a></li>
                     <li><a href="insertpage">Insert</a></li>
                     <li><a href="#" class="active">Update</a></li>
                     <li><a href="#">Drop</a></li>

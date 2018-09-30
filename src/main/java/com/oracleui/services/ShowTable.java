@@ -58,16 +58,17 @@ public class ShowTable extends HttpServlet {
 		
 		out.print("</tr>");
 		ResultSet rs1 = st.executeQuery("select * from "+tablename+" ");
-		int rowcount=1;
+		int rowcount=1; int i=1;
 		 while(rs1.next()) {
 			 out.print("<tr>");
-				for(int i=1; i<=fieldcount; i++) {
-					String data = (rs1.getObject(i).getClass().getSimpleName().equals("Timestamp")) ?(rs1.getDate(i).toString()) : (rs1.getString(i));
-					out.print(" <td>" + data + "</td> ");
+				for(int j=1; j<=fieldcount; j++) {
+					String data = (rs1.getObject(j).getClass().getSimpleName().equals("Timestamp")) ?(rs1.getDate(j).toString()) : (rs1.getString(j));
+					out.print(" <td class='"+i+"' id='"+i+j+"'>" + data + "</td> ");
 			
 				}
+			 out.print("<td class='"+i+"'><button class='btn btn-sm bg-danger text-white' onClick='deleteRecord(this)'>X</button></td>");
 			out.print("</tr>");
-			rowcount++;
+			rowcount++; i++;
 		}
 		 out.print("</table>");
 		}catch(Exception e) {

@@ -91,6 +91,10 @@ public class HomeController {
 	public String uipage() {
 		return "oracleui";
 	}
+	@RequestMapping("/sql")
+	public String getSql() {
+		return "sql";
+	}
 	
 	@RequestMapping("/getprimarycolumn")
 	public void getPrimaryColumn(HttpServletRequest request,HttpServletResponse response) {

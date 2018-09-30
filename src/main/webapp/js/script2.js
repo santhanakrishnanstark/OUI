@@ -1,6 +1,7 @@
 /**
  *  script for ORacle UI page
  */
+var total_column;
 $(document).ready(function(){
 	$('#tablecreationpan').hide();
 	$('#createtablelink').bind("click",showViewPan);
@@ -58,6 +59,13 @@ function showTName(e){
           success : function(result){
 	          $("#updatetablepan").html(result);
 	      }
+	});
+	$.ajax({
+		url: 'showsqlcolumn',
+		type: 'post',  
+		success: function(result){
+			$("#coltxt").html(result);
+		}
 	});
 }
 
@@ -126,6 +134,31 @@ function createTable(){
 	          location.reload(true);
 	      }
 	});
+}
+
+function deleteRecord(dis){
+	let row_class =$(dis).parent().attr('class') ; let i=0;
+	 $("#dbtable").find("tr td."+row_class).each(function(index){
+		    i++;
+		  });
+	total_column = (i-1);
+	let colval = new Array(); let j=1;
+	
+	 $("#dbtable").find("tr td."+row_class).each(function(index){
+		    colval[index] = $('#dbtable tr td#'+row_class+''+j).text();
+		    j++;
+	 });
+	
+	 $.ajax({
+		 url : 'deleterecord',
+		 type: 'post',
+		 data: {record:colval},
+		 success: function(result){
+			 alert(result);
+			 showTName();
+		 }
+	 });
+	
 }
 
 

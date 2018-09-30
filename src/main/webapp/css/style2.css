@@ -33,3 +33,10 @@ input[type="text"]:focus {
 	border:2px solid #0080ff; box-shadow:1px 1px 4px 2px grey;
 }
 #insertable > input[type="button"]{ float:right; margin-right: 5%; }
+
+/* Sql page style begin */
+
+#coltxt{
+	overflow-y:scroll;
+}
+

@@ -31,7 +31,7 @@
              <div class="navpan">
                 <ul>
                     <li><a href="#" class="active">Show_Table</a></li>
-                    <li><a href="#">SQL</a></li>
+                    <li><a href="sql">SQL</a></li>
                     <li><a href="insertpage">Insert</a></li>
                     <li><a href="updatepage">Update</a></li>
                     <li><a href="#">Drop</a></li>

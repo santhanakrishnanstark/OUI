@@ -32,7 +32,7 @@
              <div class="navpan">
                 <ul>
                     <li><a href="oracleuipage">Show_Table</a></li>
-                    <li><a href="#">SQL</a></li>
+                    <li><a href="sql">SQL</a></li>
                     <li><a href="#" class="active">Insert</a></li>
                     <li><a href="updatepage">Update</a></li>
                     <li><a href="#">Drop</a></li>
