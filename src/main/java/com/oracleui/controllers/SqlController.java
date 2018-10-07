@@ -63,6 +63,7 @@ public class SqlController {
 			out = response.getWriter();
 			String query = request.getParameter("query");
 			int res = st.executeUpdate(query);
+			ResultSet  rs = st.executeQuery(query);
 			if(res>=0) {
 				out.println("query executed");
 			}else {
@@ -237,11 +238,56 @@ public class SqlController {
 	return result;
 	}
 	// to check it is integer or date format
-			private boolean checkInteger(String string) {
-				boolean result = false;
-					result = Pattern.matches("[0-9]+", string);
-				return result;
+	private boolean checkInteger(String string) {
+		boolean result = false;
+			result = Pattern.matches("[0-9]+", string);
+		return result;
+	}
+	
+	@RequestMapping("/droptable")
+	public void dropTable(HttpServletRequest request,HttpServletResponse response) {
+		try {
+		out = response.getWriter();
+		String table_name = request.getParameter("tablename");
+		HttpSession session = request.getSession();
+		String uname = (String) session.getAttribute("User");
+		String pass = (String) session.getAttribute("Pass");
+		st = OracleConnect.getUrl(uname, pass);
+		
+			int res = st.executeUpdate("DROP TABLE "+table_name);
+			if(res>=0) {
+				out.println("Table Dropped");
+			}else {
+				out.print("Error ! While Dropping Table");
 			}
-
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@RequestMapping("/truncatetable")
+	public void truncatetable(HttpServletRequest request,HttpServletResponse response) {
+		try {
+		out = response.getWriter();
+		String table_name = request.getParameter("tablename");
+		HttpSession session = request.getSession();
+		String uname = (String) session.getAttribute("User");
+		String pass = (String) session.getAttribute("Pass");
+		st = OracleConnect.getUrl(uname, pass);
+		
+			int res = st.executeUpdate("TRUNCATE TABLE "+table_name);
+			if(res>=0) {
+				out.println("Table Truncate Success");
+			}else {
+				out.print("Error ! While Truncate Table");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	
 }

@@ -95,6 +95,10 @@ public class HomeController {
 	public String getSql() {
 		return "sql";
 	}
+	@RequestMapping("/drop")
+	public String getDropage() {
+		return "drop";
+	}
 	
 	@RequestMapping("/getprimarycolumn")
 	public void getPrimaryColumn(HttpServletRequest request,HttpServletResponse response) {
@@ -172,5 +176,5 @@ public class HomeController {
 		}
 		
 	}
-
+	
 }

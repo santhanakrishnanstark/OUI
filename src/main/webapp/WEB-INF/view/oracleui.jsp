@@ -34,8 +34,8 @@
                     <li><a href="sql">SQL</a></li>
                     <li><a href="insertpage">Insert</a></li>
                     <li><a href="updatepage">Update</a></li>
-                    <li><a href="#">Drop</a></li>
-                    <li><a href="#">Help</a></li>
+                    <li><a href="drop">Drop</a></li>
+                    <li><a href="help">Help</a></li>
                  </ul>
              </div>
          </div>

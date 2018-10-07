@@ -34,8 +34,8 @@
                     <li><a href="sql">SQL</a></li>
                     <li><a href="insertpage">Insert</a></li>
                     <li><a href="#" class="active">Update</a></li>
-                    <li><a href="#">Drop</a></li>
-                    <li><a href="#">Help</a></li>
+                    <li><a href="drop">Drop</a></li>
+                    <li><a href="help">Help</a></li>
                  </ul>
              </div>
          </div>
@@ -72,7 +72,7 @@
   	<script src="${pageContext.request.contextPath}/js/script2.js"></script>
   	<script src="${pageContext.request.contextPath}/js/update.js"></script>
  	<script>
- 	var name = "<%=tablename%>";
+ 	var tbname = "<%=tablename%>";
  	$('[value="<%=tablename%>"]').prop('checked', true); 
  	</script>
 </body>

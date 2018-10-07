@@ -8,7 +8,7 @@ function showUpdateTable(){
 	$.ajax({
 		url : 'ShowUpTable',
         type: 'post',
-        data : {table_name : $('.radio:checked').val(), stb:name },
+        data : {table_name : $('.radio:checked').val(), stb:tbname },
           success : function(result){
 	          $("#updatetablepan").html(result);
 	      }

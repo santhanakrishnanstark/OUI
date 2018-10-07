@@ -7,12 +7,11 @@
     	%>
 <html>
 	<head>
-		<title>OUI Insert</title>
+		<title>OUI Update</title>
 		 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Do+Hyeon|Lekton|Open+Sans" rel="stylesheet">
    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style2.css">
     <link  type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css" />
      <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
  </head>
@@ -33,9 +32,9 @@
                 <ul>
                     <li><a href="oracleuipage">Show_Table</a></li>
                     <li><a href="sql">SQL</a></li>
-                    <li><a href="#" class="active">Insert</a></li>
+                    <li><a href="insertpage">Insert</a></li>
                     <li><a href="updatepage">Update</a></li>
-                    <li><a href="drop">Drop</a></li>
+                    <li><a href="#" class="active">Drop</a></li>
                     <li><a href="help">Help</a></li>
                  </ul>
              </div>
@@ -55,19 +54,27 @@
                  </div>
              </div>
          </div>
-         <div class="col-md-9">
-           <div id="viewpan">
-           		<div class="inputdialog">
-           		<form id="insertfrm">
-					  <lable for="row">Enter No of Row : </lable> 
-					  <input type="number" class="dialogtxt" name="row" placeholder="no of row">
-					  <input class="but" id="addrowsbtn" type="button" value="Add">
-					  <input class="but" type="button" id="add" value="+">
-					  <input class="but" type="button" id="remove" value="-">
-				  </form>
-				</div>
-				<div id="insertable" class="mt-5 ml-5">hello</div>	
-				<div id="result"></div>
+         <div class="col-md-9 text-center">
+           <div id="viewpan" class="p-5">
+            <form id="dropfrm">
+              <div class="form-row m-5">
+	              <div class="col-1">
+	              	<span></span>
+	              	</div>
+	              	<div class="col-4">
+	              		<select id="tablenames" name="tablename" class="form-control">
+	              		   <option>Select Table</option>
+	           			</select>
+	              	</div>
+	              	<div class="col-2">
+	              		<button class="btn btn-danger form-control" id="dropbtn">Drop</button>
+	              	</div>
+	              	<div class="col-1"> <span>or</span> </div>
+	              	<div class="col-2">		
+	              		<button class="btn btn-warning form-control" id="truncatebtn">Truncate</button>
+	              	</div>
+              </div>
+             </form> 
            </div>
          </div>
        </div>
@@ -79,7 +86,7 @@
      <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.js"></script>
   	<script src="${pageContext.request.contextPath}/js/script.js"></script>
   	<script src="${pageContext.request.contextPath}/js/script2.js"></script>
-  	<script src="${pageContext.request.contextPath}/js/insert.js"></script>
+  	<script src="${pageContext.request.contextPath}/js/drop.js"></script>
  	<script>
  	var tbname = "<%=tablename%>";
  	$('[value="<%=tablename%>"]').prop('checked', true); 

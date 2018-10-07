@@ -4,18 +4,25 @@
 <% response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate"); %>
 <html>
 	<head>
-		<title>Oracle UI</title>
+		<title>Oracle UIs</title>
 		  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Do+Hyeon|Lekton|Open+Sans" rel="stylesheet">
    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
     <link  type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css" />
-     <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=K2D" rel="stylesheet">
  </head>
  <body>
    
      <header>
         <div class="brand">
+        <div class="baxmaxhead">
+        	<div class="head">
+			    <div class="left-eye eye"></div>
+			    <div class="eye-connect"></div>
+			    <div class="right-eye eye"></div>
+		   </div>
+		  </div>
             <h1>Oracle UI</h1>
          </div>
      </header>
@@ -27,8 +34,43 @@
                 <% if(session.getAttribute("loginerror")==null){
 					}else{	%> ${loginerror}  <% session.removeAttribute("loginerror");   
 				}%>
-				
-             <div class="logindiv">
+			<!-- Bay Max -->	
+				<div class="wrapper">
+				  <div class="head">
+				    <div class="left-eye eye"></div>
+				    <div class="eye-connect"></div>
+				    <div class="right-eye eye"></div>
+				  </div>
+				  <div class="torso">
+				    <div class="access-port">
+				      <div class="access-port-seam"></div>
+				    </div>
+				    <div class="right-torso-pad torso-pad"></div>
+				    <div class="left-torso-pad torso-pad"></div>
+				  </div>
+				  <div class="right-arm">
+				    <div class="right-thumb"></div>
+				    <div class="right-index"></div>
+				    <div class="right-index right-finger-2"></div>
+				    <div class="right-index right-finger-3"></div>
+				  </div>
+				  <div class="left-arm">
+				    <div class="left-thumb"></div>
+				    <div class="left-index"></div>
+				    <div class="left-index left-finger-2"></div>
+				    <div class="left-index left-finger-3"></div>
+				  </div>
+				  <div class="right-leg">
+				    <div class="right-thigh-pad thigh-pad"></div>
+				    <div class="foot-pad"></div>
+				  </div>
+				  <div class="left-leg">
+				    <div class="left-thigh-pad thigh-pad"></div>
+				    <div class="foot-pad"></div>
+				  </div>
+				</div>
+			<!-- Bay Max end -->	
+             <div class="logindiv mt-5">
                  <h3>Login</h3><br>
                  <form action="uilogin" method="post">
                      <div class="form-group">
