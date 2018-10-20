@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isELIgnored="false"%>
+     <%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate"); 	%>
     <%!String tablename; %>
     <% if(session.getAttribute("current_table") != null){
     	 tablename =(String) session.getAttribute("current_table");
@@ -7,21 +8,33 @@
     	%>
 <html>
 	<head>
-		<title>OUI Update</title>
+		<title>OUI Drop</title>
 		 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Do+Hyeon|Lekton|Open+Sans" rel="stylesheet">
    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
     <link  type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css" />
      <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  </head>
+ <% if(session.getAttribute("username")!=null){  %> 
 <body>
-     <header>
+    <header>
         <div class="brand">
             <h1>Oracle UI</h1>
          </div>
          <div class="profile">
-            <h5> ${User} </h5>
+            <h5> ${User} </h5> 
+            <div class="usermenu">
+				<div class="usermenu-icon"> 
+				<i class="fa fa-user-circle usericon" aria-hidden="true"></i>
+				</div>
+				 <ul class="ouimenu">
+				    <li>User Account</li>
+				     <li>Change Password</li>
+				     <li><a href="logout">Logout</a></li>
+				  </ul>
+				</div>
          </div>
      </header>
      
@@ -91,5 +104,6 @@
  	var tbname = "<%=tablename%>";
  	$('[value="<%=tablename%>"]').prop('checked', true); 
  	</script>
+ 	<%} else{ out.print("No Session is Created"); } %>
 </body>
 </html>

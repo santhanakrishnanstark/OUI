@@ -38,27 +38,43 @@ public class HomeController {
 		String password = request.getParameter("password");
 		loginaccess = LoginService.checkUser(username,password);
 		if(loginaccess) {
+			HttpSession session = request.getSession();
+			session.setAttribute("username", username);
 			return "oraclelogin";
 		}else {
 		HttpSession session = request.getSession();
-		session.setAttribute("loginerror", "<p>INVALID LOGIN PLEASE CHECK..."+username+"</p>"); 
+		session.setAttribute("loginerror", "<div class=\"arrow\"> < </div>\r\n" + 
+				"							 <div class=\"errormessage\">\r\n" + 
+				"								     <p>Invalid username/password</p>\r\n" + 
+				"							  </div>"); 
 		return "redirect:/";
 		}
 	}
 	
 	@RequestMapping("/uiregister")
-	public String register(HttpServletRequest request,HttpServletResponse response) {
-		boolean isvalid;
+	public void register(HttpServletRequest request,HttpServletResponse response) {
+		 PrintWriter out=null;
+		try { 
+		boolean isvalid;  out = response.getWriter();
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String confirmpassword = request.getParameter("confirmpassword");
 		String email = request.getParameter("email");
 		isvalid = RegisterService.register(username, password, confirmpassword, email);
 		if(isvalid) {
-			return "oraclelogin";
+			out.println("User Registered Successful");
+		}else {
+			HttpSession session = request.getSession();
+			session.setAttribute("loginerror", "<div class=\"arrow\"> < </div>\r\n" + 
+					"							 <div class=\"errormessage\">\r\n" + 
+					"								     <p>Invalid Credential</p>\r\n" + 
+					"							  </div>");
+		
+		}
+		}catch(Exception e) {
+			out.println(e);
 		}
 		
-		return "redirect:/";
 	}
 	
 	@RequestMapping("/ui")
@@ -98,6 +114,10 @@ public class HomeController {
 	@RequestMapping("/drop")
 	public String getDropage() {
 		return "drop";
+	}
+	@RequestMapping("/help")
+	public String getHelp() {
+		return "help";
 	}
 	
 	@RequestMapping("/getprimarycolumn")
@@ -175,6 +195,21 @@ public class HomeController {
 			System.out.println(e);
 		}
 		
+	}
+	@RequestMapping("/logout")
+	public String logout(HttpServletRequest request, HttpServletResponse response) {
+		try {
+		HttpSession session = request.getSession();
+		String username = (String) session.getAttribute("username");
+	    Statement st = OracleConnect.getUrl("oracleui", "oracleuipass");
+	    st.executeUpdate("update ouilogs set logout=current_timestamp where username='"+username+"' and sno=(select max(sno) from ouilogs) ");
+		 session.removeAttribute("username");
+		 session.invalidate();
+		 OracleConnect.con.close();
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		return "redirect:/";
 	}
 	
 }

@@ -222,8 +222,9 @@ public class SqlController {
 			query.replace(query.length()-3, query.length(), "");
 			 //query.deleteCharAt(index_of_comma).toString();
 			String finalquery = query.toString();
-			
+			System.out.println("Final Query : "+finalquery);
 			int res = st.executeUpdate(finalquery);
+			System.out.println(res);
 			if(res>=0) { out.print("Deleted"); }
 			else { out.println("Error Occured"); }
 			

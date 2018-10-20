@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isELIgnored="false"%>
+      <%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate"); %> 
 <html>
 <head>
 <title>Oracle UI</title>
@@ -9,8 +10,8 @@
    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
     <link  type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css" />
      <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
- 
 </head>
+ <% if(session.getAttribute("username")!=null){ %> 
 <body>
      <header>
         <div class="brand">
@@ -48,6 +49,6 @@
      <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
      <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.js"></script>
   	<script src="${pageContext.request.contextPath}/js/script.js"></script>
- 
+ <%} else{ out.print("No Session is Created"); } %>
 </body>
 </html>

@@ -1,5 +1,4 @@
 body{
-  background: linear-gradient(to right, #fc00ff, #00dbde);
     padding: 0px; margin: 0px;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -11,24 +10,25 @@ body{
 header{ 
     padding: 0.8em 0em; 
 }
-.brand{ display: inline-block; background-color: #F8F8F8;  
+.brand{ display: inline-block; 
+ 	background-color:#f3f3f3;
 	   border-top-right-radius: 40px;
-     border-bottom-right-radius: 10px;
+     border-bottom-right-radius: 10px; border-left: 6px solid deepskyblue;
 }
 .brand h1{ padding: 0.1em 0.5em;  padding-left: 1.5em;
     font-family: 'K2D', sans-serif;
-    font-size: 2.5rem; color:#34ace0; color:#ff784f;
+    font-size: 2.5rem; color:#9e9e9ec7;
 }
 .login{ margin-top: 2rem; }
 .logindiv{ 
     padding: 2rem;
-    background-color: white;
+    background-color: #fafafa;
     border-radius: 10px;
     box-shadow: 0px 0px 8px 1px lightgray;
 }
 .registerdiv{ display: none;
      padding: 2rem;
-    background-color: white;
+    background-color: #fafafa;
     border-radius: 10px;
     box-shadow: 0px 0px 8px 1px  lightgray;
 }
@@ -43,7 +43,7 @@ footer{
   position: absolute; bottom: 20px; right: 5%; 
 }
 .panel{ position: relative; bottom: 5px; 
-   height: 80px; width: 20rem; background-color: #F8F8F8; 
+   height: 80px; width: 20rem; background-color: #e8e8e8; 
     opacity: 0.8; 
      border-top-left-radius: 40px;
      border-bottom-left-radius: 10px;
@@ -81,7 +81,7 @@ footer{
 .sidepan, #viewpan{
     background-color: white;
     height: 550px; border-radius: 20px; 
-    box-shadow: 0px 0px 5px 1px  whitesmoke;
+    box-shadow: 0px 0px 5px 1px #d7d7d7;
 }
 .sidepan{ margin-left: 10px; overflow: hidden;
 }
@@ -97,7 +97,7 @@ text-decoration: none;
 color: dimgrey; font-weight: bolder; border-bottom: 1px solid skyblue ;
 }
 #viewpan, .navpan{ margin: 0px 25px; } #viewpan{ overflow: scroll;}
-.navpan{ background-color: white; border-radius: 20px; 
+.navpan{  background-color: #f8f8f8; border-radius: 20px; 
     box-shadow: 0px 0px 5px 1px  whitesmoke; padding: 13px; }
 .sidepan h4{ font-family: monospace; padding-left: 10%;
 		 padding-top: 5%; padding-bottom: 2%; 
@@ -109,28 +109,52 @@ ul li{ text-decoration: none; float: left;
 ul li a{ text-decoration: none; color: gray;  }
 ul li a:hover{ 
 text-decoration: none; 
-color: dimgrey; font-weight: bolder; border-bottom: 1px solid skyblue ;
+color: dimgrey; font-weight: bolder;
 }
-.active{ text-decoration: none; 
-color: pink; font-weight: bolder; border-bottom: 1px solid skyblue ;
+.active{ text-decoration: none; padding-left:5px;
+    color: #F44336; font-weight: bolder; border-left:5px solid #F44336;
 }
-.profile{ display: inline-block; float: right;
+
+.profile{ float: right;
 	 margin-top: 2%; padding-right: 8%; 
 	 padding-left: 2%; padding-top: 0.5%;
 		background-color: white;
      border-radius: 40px 0px 0px 10px;
-    box-shadow: 0px 0px 1px 1px white;
+        box-shadow: 0px 0px 1px 1px #e0e0e0; 
 } 
-.profile h5{ display: inline-block; }
-.profile h5::after{
-    content: '\23456';
-    padding: 5px 8px;
-    margin-left: 15px;
-    background-color: skyblue; 
-    border-radius: 50%;
+.profile h5{ display: inline-block; margin-right:10px;  vertical-align: bottom; }
+.usermenu{ display:inline-block;}
+.usermenu-icon{
+  width:40px; height:40px;
+  background-color:cornflowerblue;
+  border-radius:50%;
+  box-shadow:0px 0px 5px whitesmoke;
+  cursor:pointer;
 }
+.usermenu-icon:hover{
+  box-shadow:0px 0px 10px grey;
+}
+.ouimenu{ position:absolute; z-index:4; background-color:white;
+  list-style-type:none; margin-right:10px; margin-top:5px;
+  padding:20px 10px; display:none; 
+  border-radius:5%;   margin-right: 5%;  left: 83%;
+  box-shadow:0px 0px 7px lightgray;
+}
+.ouimenu li{ padding:5px; 
+       color:gray;  }
+.showmenu{ display:inline-block; }
+.ouimenu li:hover{ font-weight:bolder; cursor:pointer; }
+
+i.usericon{
+	color: white;
+    position: relative;
+    top: 8px;
+    left: 8px;
+    font-size: 1.5rem;
+}
+
 #tablecreationpan{
-    position: relative; 
+    position: relative;  
     top: 13%; left: 8%; margin-right:5%;
 }
 .tcreationform{
@@ -729,3 +753,24 @@ table tr td{ margin:5px; padding:5px; }
 }
 
 /* Baymax css end*/
+
+/* error message */
+.errormessage{
+  display:inline-block;
+  padding:8px 30px;
+  border:2px solid #F44336;
+  box-shadow:0px 0px 5px whitesmoke; border-radius:6px;
+}
+.arrow{
+  display:inline-block;
+  position:relative;
+  left:8px; font-size:1.5em; font-weight:bold;
+  top:14px; color:#F44336;
+}
+p{ margin-bottom:0px !important; color:#F44336;
+  	font-weight:bold;
+   font-family: monospace; }
+
+/*error message end*/
+
+.deletebtn{ border-radius:50%; }

@@ -66,7 +66,7 @@ public class ShowTable extends HttpServlet {
 					out.print(" <td class='"+i+"' id='"+i+j+"'>" + data + "</td> ");
 			
 				}
-			 out.print("<td class='"+i+"'><button class='btn btn-sm bg-danger text-white' onClick='deleteRecord(this)'>X</button></td>");
+			 out.print("<td class='"+i+"'><button class='btn btn-sm bg-danger deletebtn text-white' onClick='deleteRecord(this)'>X</button></td>");
 			out.print("</tr>");
 			rowcount++; i++;
 		}

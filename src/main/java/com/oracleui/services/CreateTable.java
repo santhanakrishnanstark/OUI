@@ -14,9 +14,7 @@ import org.apache.jasper.tagplugins.jstl.core.Out;
 
 import com.oracleui.dbconnect.OracleConnect;
 
-/**
- * Servlet implementation class CreateTable
- */
+
 public class CreateTable extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

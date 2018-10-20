@@ -12,11 +12,12 @@ public class LoginService {
 		Statement st  = OracleConnect.getUrl("oracleui", "oracleuipass");
 		ResultSet rs = st.executeQuery("select * from register where username='"+username+"' and password='"+password+"' ");
 		if(rs.next()) {
+			int res = st.executeUpdate("insert into ouilogs(sno,username,ldate,login) values (ouilogseq.nextval,'"+username+"',sysdate,current_timestamp)");
 			OracleConnect.con.close();
 			return true; 
 		}
 		}catch(Exception e) {
-			System.out.println("error");
+			System.out.println(e);
 		}
 		return false;
 	}

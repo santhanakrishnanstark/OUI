@@ -8,7 +8,13 @@ $(document).ready(function(){
 	showTables(); viewTableOnLoad();
 	$('#go').bind("click",showTForm);
 	$('#createtb').bind("click",createTable); 
+	
+	 $(".usermenu .usermenu-icon").bind("click",showMenu);
+	
 });
+function showMenu(){ 
+	  $(".ouimenu").toggleClass("showmenu"); 
+}
 
 function showTables(){
 	$.ajax({
@@ -86,7 +92,6 @@ function showTForm(){
 			"<th>Primary</th>" +
 			"<th>Unique</th>" +
 			"<th>Not Null</th>" +
-			"<th>AI</th>" +
 			"</tr></thead><tbody>";
 	for(let i=0; i<tcol; i++){
 		tquery+="<tr>" +
@@ -101,7 +106,6 @@ function showTForm(){
 				 "<td><input type='checkbox' value='PRIMARY KEY' name='p"+i+"'></td>" +
 				 "<td><input type='checkbox' value='UNIQUE' name='u"+i+"'></td>" +
 				 "<td><input type='checkbox' value='NOT NULL' name='n"+i+"'></td>" +
-				 "<td><input type='checkbox' value='auto' name='a"+i+"'></td>" +
 				"</tr>";
 	}
 	let tqueryend="</tbody></table>" +
@@ -148,7 +152,7 @@ function deleteRecord(dis){
 		    colval[index] = $('#dbtable tr td#'+row_class+''+j).text();
 		    j++;
 	 });
-	
+	 
 	 $.ajax({
 		 url : 'deleterecord',
 		 type: 'post',
@@ -158,7 +162,7 @@ function deleteRecord(dis){
 			 showTName();
 		 }
 	 });
-	
 }
+
 
 
