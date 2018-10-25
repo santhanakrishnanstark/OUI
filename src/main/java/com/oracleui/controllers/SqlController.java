@@ -213,9 +213,9 @@ public class SqlController {
 			while(rs.next()) {
 				cols[c]= rs.getString("column_name");
 				c++;
-			}
+			}       //(checkIsDate(rowarray[i]))?"TO_DATE(\'"+rowarray[i]+"\',\'dd/mm/yyyy\')," :"\'"+rowarray[i]+"\'
 			for(int i=0; i<count; i++) {
-			     String field =	checkInteger(fields[i])? fields[i] :("\'"+fields[i]+"\'"); 
+			     String field =	checkInteger(fields[i])? fields[i] :(checkIsDate(fields[i]))?"TO_DATE(\'"+fields[i]+"\',\'YYYY/MM/DD\')":("\'"+fields[i]+"\'"); 
 				query.append(" "+cols[i]+" = "+field+" and");
 			}
 			int index_of_comma = query.indexOf("and", query.length()-3);
@@ -224,7 +224,7 @@ public class SqlController {
 			String finalquery = query.toString();
 			System.out.println("Final Query : "+finalquery);
 			int res = st.executeUpdate(finalquery);
-			System.out.println(res);
+			//System.out.println(res);
 			if(res>=0) { out.print("Deleted"); }
 			else { out.println("Error Occured"); }
 			
@@ -289,6 +289,31 @@ public class SqlController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@RequestMapping("/changepassword")
+	public void changePassword(HttpServletRequest request,HttpServletResponse response) {
+		try {
+			out = response.getWriter();
+			String password = request.getParameter("password");
+			HttpSession session = request.getSession();
+			String uname = (String) session.getAttribute("User");
+			String pass = (String) session.getAttribute("Pass");
+			st = OracleConnect.getUrl(uname, pass);
+			System.out.println(uname+" "+password);
+			int res = st.executeUpdate("alter user "+uname+" identified by "+password+" ");
+			
+			if(res>=0) {
+				out.print("Password Changed !");
+			}else {
+				out.println("Error Occured! ");
+			}
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	}
 	
 }

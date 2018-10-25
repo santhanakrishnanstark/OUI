@@ -24,7 +24,7 @@ public class ShowUpTable extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("ehlow owrliss");
+		
 		PrintWriter out = response.getWriter();
 		String tablename = request.getParameter("table_name");
 		if(tablename == null) { tablename = request.getParameter("stb"); }
@@ -37,8 +37,8 @@ public class ShowUpTable extends HttpServlet {
 		/* to Check the table contain primary key column */
 			ResultSet primarycol=st.executeQuery("SELECT cols.table_name, cols.column_name FROM all_constraints cons, all_cons_columns cols WHERE cols.table_name = '"+tablename+"' AND cons.constraint_type = 'P' AND cons.constraint_name = cols.constraint_name AND cons.owner = cols.owner ORDER BY cols.table_name, cols.position ");
 			if(primarycol.next()) {
-				System.out.println("Primary column : "+primarycol.getString("column_name"));
-			}else { System.out.println("no primary cloumn available");}
+				
+			
 		/* end of checking primary key column*/
 		String []fields;  int fieldcount=0;
 		ResultSet rscount = st.executeQuery("select count(column_name) from user_tab_columns where table_name = '"+tablename+"' ");
@@ -76,6 +76,7 @@ public class ShowUpTable extends HttpServlet {
 			rowcount++; i++;
 		}
 		 out.print("</table>");
+			}else { out.print("<h6 class='m-5 text-secondary'>Sorry This table does not contain primary column</h6>");}
 		}catch(Exception e) {
 			System.out.println(e);
 		}

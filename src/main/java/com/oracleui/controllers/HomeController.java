@@ -2,6 +2,7 @@ package com.oracleui.controllers;
 
 import java.io.PrintWriter;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.servlet.http.HttpServletRequest;
@@ -63,7 +64,13 @@ public class HomeController {
 		isvalid = RegisterService.register(username, password, confirmpassword, email);
 		if(isvalid) {
 			out.println("User Registered Successful");
+			HttpSession session = request.getSession();
+			session.setAttribute("loginerror", "<div class=\"sarrow\"> < </div>\r\n" + 
+					"							 <div class=\"successmessage\">\r\n" + 
+					"								     <p style='color:green'>User Registered Successful, Login</p>\r\n" + 
+					"							  </div>");
 		}else {
+			out.print("Error Orrcured !");
 			HttpSession session = request.getSession();
 			session.setAttribute("loginerror", "<div class=\"arrow\"> < </div>\r\n" + 
 					"							 <div class=\"errormessage\">\r\n" + 
@@ -78,7 +85,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/ui")
-	public String connectoracle(HttpServletRequest request) {
+	public String connectoracle(HttpServletRequest request) throws SQLException {
 		boolean isvalid;
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
@@ -87,6 +94,10 @@ public class HomeController {
 		if(st != null) {
 			session.setAttribute("User", username);
 			session.setAttribute("Pass", password);
+			ResultSet rs = st.executeQuery("select count(TNAME) from tab where tabtype='TABLE' ");
+			if(rs.next()) { session.setAttribute("Tables", rs.getInt(1)); }
+			ResultSet rs1 = st.executeQuery("select count(TNAME) from tab where tabtype='VIEW' ");
+			if(rs.next()) { session.setAttribute("Views", rs.getInt(1)); }
 			return "oracleui";
 		}else {
 			session.setAttribute("loginerror", "<p>INVALID LOGIN </p>"); 
@@ -211,5 +222,23 @@ public class HomeController {
 		}
 		return "redirect:/";
 	}
+	
+	@RequestMapping("/checkusername")
+	public void checkusername(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			System.out.println("running");
+		PrintWriter out = response.getWriter();
+		String uname = request.getParameter("uname");
+		Statement st = OracleConnect.getUrl("oracleui", "oracleuipass");
+		ResultSet rs = st.executeQuery("select * from register where username ='"+uname+"' ");
+		if(rs.next()) {
+			out.print(true);
+		}else { out.print(false); }
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		
+	}
+	
 	
 }

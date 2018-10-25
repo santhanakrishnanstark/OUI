@@ -30,12 +30,12 @@ function getTableData(el){
         data : {table_name : $('.radio:checked').val(), stb:name },
           success : function(result){
 	         primary_col_index = result;
-	         console.log(primary_col_index);
+	         console.log("p index "+primary_col_index);
 	         primary_col_name = $('#dbtable tr th').get(Number(primary_col_index-1)).innerHTML;
 	         console.log("primary clo name : "+primary_col_name);
 	         var res =  $("#dbtable tr:eq('"+current_row_class+"') td").get(Number(primary_col_index-1)).innerHTML;
 	         primary_col_value = $(res).attr("value");
-	         console.log($(res).attr("value"));
+	         console.log("p : "+$(res).attr("value"));
 	      }
 	});
 	

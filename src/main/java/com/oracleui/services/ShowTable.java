@@ -41,7 +41,8 @@ public class ShowTable extends HttpServlet {
 		if(rscount.next()) {
 			count = rscount.getInt("count(column_name)");
 		}
-		out.print("<table id='dbtable'> ");
+		out.print("<button class='btn btn-small btn-secondary mr-3 float-right' onClick='tableprint()' id='printable'>print</button>");
+		out.print("<table id='dbtable' class='mt-5'> ");
 		out.print("<tr>");
 		String cols[] = new String[count]; int c=0;
 		ResultSet rs = st.executeQuery("select column_name from user_tab_columns where table_name = '"+tablename+"' ");

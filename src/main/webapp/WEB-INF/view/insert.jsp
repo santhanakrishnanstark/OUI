@@ -31,8 +31,8 @@
 				<i class="fa fa-user-circle usericon" aria-hidden="true"></i>
 				</div>
 				 <ul class="ouimenu">
-				    <li>User Account</li>
-				     <li>Change Password</li>
+				    <li onClick="showUserAccount()">User Account</li>
+				     <li onClick="changePassword()">Change Password</li>
 				     <li><a href="logout">Logout</a></li>
 				  </ul>
 				</div>
@@ -87,7 +87,7 @@
      
      <footer class="mt-2">
      </footer>
-     
+ 
      <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
      <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.js"></script>
   	<script src="${pageContext.request.contextPath}/js/script.js"></script>
@@ -95,7 +95,8 @@
   	<script src="${pageContext.request.contextPath}/js/insert.js"></script>
  	<script>
  	var tbname = "<%=tablename%>";
- 	$('[value="<%=tablename%>"]').prop('checked', true); 
+ 	$('input[value="<%=tablename%>"]').prop('checked', true); 
+ 	$('input[value="<%=tablename%>"]').parent().css({'font-weight':'bolder'});
  	</script>
  	 <%} else{ out.print("No Session is Created"); } %>
 </body>

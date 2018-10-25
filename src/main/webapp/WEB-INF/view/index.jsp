@@ -12,17 +12,23 @@
      <link href="https://fonts.googleapis.com/css?family=K2D" rel="stylesheet">
      <link href="https://fonts.googleapis.com/css?family=Chakra+Petch" rel="stylesheet">
  </head>
- <body>
+ 
+<div id="load">
+  <h2 class="oui">Oracle UI</h2>
+  <div class="logo">
+   <div class="loader">
+  <div class="inner one"></div>
+  <div class="inner two"></div>
+  <div class="inner three"></div>
+</div> 
+  </div>
+<div class="loading">SELECT * FROM Loading...</div>
+
+</div>
+ <body class="loaderbody">
    
      <header>
         <div class="brand">
-        <div class="baxmaxhead">
-        	<div class="head">
-			    <div class="left-eye eye"></div>
-			    <div class="eye-connect"></div>
-			    <div class="right-eye eye"></div>
-		   </div>
-		  </div>
             <h1>Oracle UI</h1>
          </div>
      </header>
@@ -94,19 +100,20 @@
                  <form id="registerfrm" method="post">
                      <div class="form-group">
                         <label for="username" > Username : </label>
-                         <input type="text" class="form-control" name="username">
+                         <input type="text" id="unameid" onkeyup="checkusername()" class="form-control" name="username">
                     </div>
                      <div class="form-group">
                           <label for="password" > Password : </label>
-                         <input type="password" class="form-control" name="password">
+                         <input type="password" id="pass" class="form-control" name="password">
                      </div> 
                      <div class="form-group">
                           <label for="password" >Confirm Password : </label>
-                         <input type="password" class="form-control" name="confirmpassword">
+                         <input type="password" id="cpass" onkeyup="checkpass()" class="form-control" name="confirmpassword">
+                    	<p id="passerror"></p>
                      </div>
                      <div class="form-group">
                         <label for="email" > Email ID : </label>
-                         <input type="email" class="form-control" name="email">
+                         <input type="email" class="form-control" name="email" required>
                     </div>
                      <input type="submit" id="registerbtn" value="Register" class="btn btn-primary">
                 </form>

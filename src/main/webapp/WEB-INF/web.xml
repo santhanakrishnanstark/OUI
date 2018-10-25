@@ -58,12 +58,19 @@
  	<servlet-name>Update</servlet-name>
  	<servlet-class>com.oracleui.services.Update</servlet-class>
  </servlet>
+ <servlet>
+ 	<description>
+ 	</description>
+ 	<display-name>CheckUsername</display-name>
+ 	<servlet-name>CheckUsername</servlet-name>
+ 	<servlet-class>com.oracleui.services.CheckUsername</servlet-class>
+ </servlet>
 <servlet-mapping>
-	<servlet-name>default</servlet-name>
+<servlet-name>default</servlet-name>  
     <url-pattern>*.css</url-pattern>  
 </servlet-mapping>  
 <servlet-mapping>
-	<servlet-name>default</servlet-name>
+<servlet-name>default</servlet-name>  
     <url-pattern>*.js</url-pattern>  
 </servlet-mapping>  
 <servlet-mapping>  
@@ -97,5 +104,9 @@
 <servlet-mapping>
 	<servlet-name>Update</servlet-name>
 	<url-pattern>/Update</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>CheckUsername</servlet-name>
+	<url-pattern>/CheckUsername</url-pattern>
 </servlet-mapping> 
 </web-app>  

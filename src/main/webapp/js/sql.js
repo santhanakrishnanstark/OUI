@@ -49,7 +49,6 @@ function generateUpdateQuery(){
 		}
 	});
 }
-generatedeletequery
 function generateDeleteQuery(){
 	$.ajax({
 		url: 'generatedeletequery',

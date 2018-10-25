@@ -30,8 +30,8 @@
 				<i class="fa fa-user-circle usericon" aria-hidden="true"></i>
 				</div>
 				 <ul class="ouimenu">
-				    <li>User Account</li>
-				     <li>Change Password</li>
+				    <li onClick="showUserAccount()">User Account</li>
+				     <li onClick="changePassword()">Change Password</li>
 				     <li><a href="logout">Logout</a></li>
 				  </ul>
 				</div>

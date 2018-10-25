@@ -1,9 +1,11 @@
+
 $(document).ready(function(){
 	$("#addrowsbtn").bind("click",addRow);
 	 $("#remove").bind("click",remove);
 	  $("#add").bind("click",add);
 	  //alert(document.querySelector("table").rows[0].cells.length);
 	  var col=document.querySelector("table").rows[0].cells.length;
+	 
 });
 
 function addRow(){
